@@ -9,12 +9,7 @@ const CampaignList = ({ data: {loading, error, campaigns } = {}}) => {
     return <p>{error.message}</p>;
   }
 
-  console.log('campaigns', campaigns)
-
-  return campaigns.map((c, k) => {
-    console.log('key', k, 'camp', c)
-    return <Campaign campaign={c} key={k}/>
-  })
-};
+  return campaigns.map((c, k) => <Campaign campaign={c} key={k}/>)
+}
 
 export default CampaignList

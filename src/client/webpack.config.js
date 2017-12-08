@@ -38,6 +38,24 @@ module.exports = {
           },
         ]
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
     ],
   },
   resolve: {
@@ -46,7 +64,7 @@ module.exports = {
       "node_modules",
     ],
     // An array of extensions that should be used to resolve modules
-    extensions: [".js"],
+    extensions: [".js", ".css"],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

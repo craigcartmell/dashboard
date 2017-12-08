@@ -1,7 +1,8 @@
 import React from 'react'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
-import {fromJS} from 'immutable-js'
+
+import styles from './app.css'
 
 import CampaignList from '../CampaignList';
 
@@ -18,6 +19,6 @@ const CampaignListWithData = graphql(campaignListQuery)(CampaignList);
 
 export default class extends React.Component {
   render () {
-    return <CampaignListWithData/>
+    return <div className={styles.root}><CampaignListWithData/></div>
   }
 }

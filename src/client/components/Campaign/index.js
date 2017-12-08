@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Campaign = ( { campaign } ) => {
-  return <div>id: {campaign ? campaign.id : 'unknown'} name: {campaign ? campaign.name: 'unknown'} baa</div>
+const Campaign = ( { campaign = {} } ) => {
+  return <div>{campaign.id} name: {campaign.name}</div>
 };
 
 export default Campaign
