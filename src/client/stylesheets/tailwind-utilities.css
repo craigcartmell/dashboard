@@ -1,1 +1,3 @@
-@tailwind utilities;
+:global {
+    @tailwind utilities;
+}

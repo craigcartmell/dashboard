@@ -8,15 +8,7 @@ import App from '../components/App'
 
 const Router = () => (
   <BrowserRouter>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-      </ul>
-
-      <hr/>
-
-      <Route exact path="/" component={App}/>
-    </div>
+    <Route exact path="/" component={App}/>
   </BrowserRouter>
 )
 

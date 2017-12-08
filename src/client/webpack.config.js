@@ -43,13 +43,20 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
+            options: {
+              sourceMap: true,
+            }
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
+              minimize: true,
+              modules: true,
+              sourceMap: true,
               importLoaders: 1,
-            }
+              localIdentName: "[name]__[local]___[hash:base64:5]",
+            },
           },
           {
             loader: 'postcss-loader'

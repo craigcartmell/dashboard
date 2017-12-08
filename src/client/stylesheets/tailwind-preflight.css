@@ -1,1 +1,3 @@
-@tailwind preflight;
+:global {
+    @tailwind preflight;
+}
