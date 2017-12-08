@@ -6,20 +6,20 @@ var appUrl = 'http://localhost:8080' // require("./helpers").appUrl
 // Define our base config
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "./index.js"),
-    // index: [
-    //   "babel-polyfill",
-    //   // activate HMR for React
-    //   "react-hot-loader/patch",
-    //   // bundle the client for webpack-dev-server
-    //   // and connect to the provided endpoint
-    //   "webpack-dev-server/client?http://localhost:3001",
-    //   // bundle the client for hot reloading
-    //   // only- means to only hot reload for successful updates
-    //   "webpack/hot/only-dev-server",
-    //   // the entry point of our app
-    //   "./index.js",
-    // ],
+    // app: path.resolve(__dirname, "./index.js"),
+    index: [
+      "babel-polyfill",
+      // activate HMR for React
+      "react-hot-loader/patch",
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint
+      "webpack-dev-server/client?http://localhost:8080",
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
+      "webpack/hot/only-dev-server",
+      // the entry point of our app
+      "./index.js",
+    ],
   },
   context: path.resolve(__dirname),
   output: {
@@ -69,16 +69,14 @@ module.exports = {
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
   ],
-  // Enable hot reloading in dev
   devServer: {
     contentBase: path.join(__dirname),
+    historyApiFallback: true,
     hot: true,
-    // historyApiFallback: true,
-    // host: 'http://localhost',
-    // hot: true,
-    // inline: true,
-    // port: '3001',
-    // https: false,
-    // publicPath: appUrl,
+    // host: 'http://127.0.0.1',
+    inline: true,
+    // port: '8080',
+    https: false,
+    publicPath: '/',
   },
 }

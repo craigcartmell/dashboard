@@ -1,21 +1,24 @@
-import { Campaign } from './connectors';
+import { Campaign } from './connectors'
 
 const resolvers = {
   Query: {
+    campaigns(_) {
+      return Campaign.findAll()
+    },
     campaign(_, args) {
-      return Campaign.find({ where: args });
+      return Campaign.find({ where: args })
     },
   },
   Campaign: {
     client(campaign) {
-      return campaign.getClient();
+      return campaign.getClient()
     },
   },
   Client: {
     campaign(client) {
-      return client.getCampaign();
+      return client.getCampaign()
     },
   },
 };
 
-export default resolvers;
+export default resolvers

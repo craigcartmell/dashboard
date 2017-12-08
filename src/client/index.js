@@ -23,3 +23,18 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 )
+
+if (module.hot) {
+  module.hot.accept("./router", () => {
+    // If you use Webpack 2 in ES modules mode, you can
+    // use <App /> here rather than require() a <NextApp />.
+    const NextApp = require("./router").default
+
+    ReactDOM.render(
+      <ApolloProvider client={client}>
+        <NextApp />
+      </ApolloProvider>,
+      document.getElementById("root")
+    )
+  })
+}
