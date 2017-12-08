@@ -1,0 +1,32 @@
+{
+  "name": "smartcontent-dashboard-server",
+  "version": "1.0.0",
+  "description": "SmartContent Dashboard Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Craig Cartmell",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "apollo-server-express": "^1.2.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.12.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.27.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.12.5"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}
