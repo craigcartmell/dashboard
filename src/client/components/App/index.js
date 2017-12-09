@@ -7,12 +7,12 @@ import styles from './app.css'
 import CampaignList from '../CampaignList'
 import GridItem from '../GridItem'
 
-const campaignsManualLatestQuery = gql`
-   query campaignsManualLatestQuery {
-     campaignsManualLatest {
+const campaignsQuery = gql`
+   query campaignsQuery {
+     campaigns {
        id
        name
-       createdAt
+       created_at
        client {
         name
        }
@@ -20,7 +20,7 @@ const campaignsManualLatestQuery = gql`
    }
  `;
 
-const CampaignListWithData = graphql(campaignsManualLatestQuery)(CampaignList);
+const CampaignListWithData = graphql(campaignsQuery)(CampaignList);
 
 export default class extends React.Component {
   render () {

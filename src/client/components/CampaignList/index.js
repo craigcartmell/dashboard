@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import styles from './campaign-list.css'
 
-const CampaignList = ({data : {campaignsManualLatest: campaigns, error, loading }}) => {
+const CampaignList = ({data : {campaigns, error, loading }}) => {
   if (loading) {
     return <p>Loading ...</p>;
   }
@@ -17,7 +17,7 @@ const CampaignList = ({data : {campaignsManualLatest: campaigns, error, loading 
         <h5>{c.client.name}</h5>
       </div>
       <div style={{float: 'right'}}>
-        <h5>{moment(c.createdAt).fromNow()}</h5>
+        <h5>{moment(c["created_at"]).fromNow()}</h5>
       </div>
     </div>)
   }</div>

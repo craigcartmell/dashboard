@@ -1,51 +1,17 @@
-import Sequelize from 'sequelize';
+import objection from 'objection'
+import knex from 'knex'
 
-const db = new Sequelize('smartcontent-admin', 'homestead', 'secret', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 33060,
-  define: {
-    timestamps: false,
-  },
-});
+const Model = objection.Model;
 
-const OpenLayerCampaignModel = db.define('open_layer_campaign', {
-  id: { type: Sequelize.STRING, primaryKey: true },
-  name: { type: Sequelize.STRING },
-});
-
-const CampaignModel = db.define('campaign', {
-    id: { type: Sequelize.STRING, primaryKey: true },
-    name: { type: Sequelize.STRING },
-    createdAt: {type: Sequelize.DATE, field: 'created_at' },
-  },
-  {
-    scopes: {
-      manual: {
-        // attributes: ['id', 'openLayerCampaigns.id'],
-        include: [
-          {model: OpenLayerCampaignModel, as: 'openLayerCampaigns', required: false}
-        ],
-        // where: {
-        //   '$openLayerCampaigns.id$': null
-        // }
-      },
-    }
+const db = knex({
+  client: 'mysql',
+  connection: {
+    host : 'localhost',
+    user : 'homestead',
+    password : 'secret',
+    database : 'smartcontent-admin',
+    port: 33060,
   }
-);
-
-const ClientModel = db.define('client', {
-  id: { type: Sequelize.STRING, primaryKey: true },
-  name: { type: Sequelize.STRING },
 });
 
-CampaignModel.belongsTo(ClientModel, {foreignKey: 'client_id'})
-CampaignModel.hasMany(OpenLayerCampaignModel, {foreignKey: 'campaign_id', sourceKey: 'id', as: 'openLayerCampaigns'});
-ClientModel.hasOne(CampaignModel, {foreignKey: 'client_id'})
-OpenLayerCampaignModel.hasOne(CampaignModel, {foreignKey: 'id', sourceKey: 'campaign_id'});
-
-const Campaign = db.models.campaign;
-const Client = db.models.client;
-const OpenLayerCampaign = db.models.openLayerCampaigns;
-
-export { Campaign, Client, OpenLayerCampaign };
+Model.knex(db);
