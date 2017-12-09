@@ -26,29 +26,21 @@ export default class extends React.Component {
   render () {
     return <div className={styles.component}>
       <div className={styles.grid + " flex md:flex-row-reverse flex-wrap"}>
-        <GridItem className="flex-3" title="Latest Manual Campaigns">
+        <GridItem className="flex-1" title="Latest Manual Campaigns">
           <CampaignListWithData/>
         </GridItem>
 
-        <GridItem className="flex-1" title="Going Live">
-
-        </GridItem>
-
-        <GridItem className="flex-1" title="Coming Soon">
-
+        <GridItem className="flex-2" title="Latest Failed Jobs">
+          <CampaignListWithData/>
         </GridItem>
       </div>
       <div className={styles.grid + " flex md:flex-row-reverse flex-wrap"}>
-        <GridItem className="flex-3" title="Latest Manual Campaigns">
-          <CampaignListWithData/>
-        </GridItem>
-
-        <GridItem className="flex-1" title="Going Live">
-
-        </GridItem>
-
         <GridItem className="flex-1" title="Latest Manual Campaigns">
 
+        </GridItem>
+
+        <GridItem className="flex-3" title="UK Campaigns">
+          <CampaignListWithData/>
         </GridItem>
       </div>
     </div>

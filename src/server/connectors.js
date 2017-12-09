@@ -22,9 +22,13 @@ const CampaignModel = db.define('campaign', {
   {
     scopes: {
       manual: {
-        include: {
-          model: OpenLayerCampaignModel, as: 'openLayerCampaigns', where: {id: null}
-        }
+        // attributes: ['id', 'openLayerCampaigns.id'],
+        include: [
+          {model: OpenLayerCampaignModel, as: 'openLayerCampaigns', required: false}
+        ],
+        // where: {
+        //   '$openLayerCampaigns.id$': null
+        // }
       },
     }
   }

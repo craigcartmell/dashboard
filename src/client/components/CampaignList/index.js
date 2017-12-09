@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import styles from './campaign-list.css'
 
-const CampaignList = ({ data: {loading, error, campaignsManualLatest } = {}}) => {
+const CampaignList = ({data : {campaignsManualLatest: campaigns, error, loading }}) => {
   if (loading) {
     return <p>Loading ...</p>;
   }
@@ -10,14 +10,17 @@ const CampaignList = ({ data: {loading, error, campaignsManualLatest } = {}}) =>
     return <p>{error.message}</p>;
   }
 
-  return <ul className={styles.list}>{campaignsManualLatest.map((c, k) =>
-
-    <li className={styles.listItem} key={k}>
-      <h4>{c.name}</h4>
-      <h5>{c.client.name}</h5>
-      <span>{moment(c.createdAt).fromNow()}</span>
-    </li>)
-  }</ul>
+  return <div className={styles.list}>{campaigns && campaigns.map((c, k) =>
+    <div className={styles.listItem} key={k}>
+      <div style={{width: '70%', float: 'left', marginBottom: '14px'}}>
+        <h4>{c.name}</h4>
+        <h5>{c.client.name}</h5>
+      </div>
+      <div style={{float: 'right'}}>
+        <h5>{moment(c.createdAt).fromNow()}</h5>
+      </div>
+    </div>)
+  }</div>
 }
 
 export default CampaignList

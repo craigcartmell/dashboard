@@ -61,7 +61,7 @@
     height: 100%;
     max-height: 100%;
     overflow: hidden;
-    background-color: config('colors.grey-lighter');
+    background-color: config('colors.black');
     padding: 20px;
 }
 

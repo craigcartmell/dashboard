@@ -12,11 +12,14 @@ const resolvers = {
     },
     campaignsManualLatest(_) {
       return Campaign
-        // .scope('manual')
+        .scope('manual')
         .findAll({
           limit: 5,
+          order: [
+            ['createdAt', 'DESC'],
+            ['name', 'ASC'],
+          ],
         })
-        // .order('createdAt', 'desc')
     }
   },
   Campaign: {
