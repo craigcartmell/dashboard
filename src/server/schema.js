@@ -21,6 +21,7 @@ type OpenLayerCampaign {
 }
 type Query {
   campaigns: [Campaign]
+  campaignsManual: [Campaign]
   campaign(id: String!): Campaign
 }
 `;

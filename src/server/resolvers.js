@@ -5,20 +5,12 @@ const resolvers = {
     campaigns(_) {
       return Campaign.query().limit(5).then()
     },
+    campaignsManual(_) {
+      return Campaign.query().applyFilter('manual').limit(5).orderBy('created_at', 'DESC').then()
+    },
     campaign(_, args) {
       return Campaign.query().findById(args.id).then()
     },
-    // campaignsManualLatest(_) {
-    //   return Campaign
-    //     .scope('manual')
-    //     .findAll({
-    //       limit: 5,
-    //       order: [
-    //         ['createdAt', 'DESC'],
-    //         ['name', 'ASC'],
-    //       ],
-    //     })
-    //}
   },
   Campaign: {
     client(campaign) {

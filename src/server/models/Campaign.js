@@ -9,8 +9,12 @@ class Campaign extends Model {
 
   static get namedFilters() {
     return {
-      manual: (builder) => builder,  //builder.where('stars', '>', 3),
-    };
+      manual: (builder) => builder.whereNotExists(function() {
+        this
+          .select('*')
+          .from('open_layer_campaigns')
+          .whereRaw('campaigns.id = open_layer_campaigns.campaign_id');
+    })}
   }
 
   // Optional JSON schema. This is not the database schema!

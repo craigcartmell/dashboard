@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import styles from './campaign-list.css'
 
-const CampaignList = ({data : {campaigns, error, loading }}) => {
+const CampaignList = ({data : {campaignsManual: campaigns, error, loading }}) => {
   if (loading) {
     return <p>Loading ...</p>;
   }

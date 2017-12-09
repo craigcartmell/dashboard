@@ -8,8 +8,8 @@ import CampaignList from '../CampaignList'
 import GridItem from '../GridItem'
 
 const campaignsQuery = gql`
-   query campaignsQuery {
-     campaigns {
+   query campaignsManualQuery {
+     campaignsManual {
        id
        name
        created_at
