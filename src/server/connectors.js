@@ -9,17 +9,28 @@ const db = new Sequelize('smartcontent-admin', 'homestead', 'secret', {
   },
 });
 
-const CampaignModel = db.define('campaign', {
+const OpenLayerCampaignModel = db.define('open_layer_campaign', {
   id: { type: Sequelize.STRING, primaryKey: true },
   name: { type: Sequelize.STRING },
 });
+
+const CampaignModel = db.define('campaign', {
+    id: { type: Sequelize.STRING, primaryKey: true },
+    name: { type: Sequelize.STRING },
+    createdAt: {type: Sequelize.DATE, field: 'created_at' },
+  },
+  {
+    scopes: {
+      manual: {
+        include: {
+          model: OpenLayerCampaignModel, as: 'openLayerCampaigns', where: {id: null}
+        }
+      },
+    }
+  }
+);
 
 const ClientModel = db.define('client', {
-  id: { type: Sequelize.STRING, primaryKey: true },
-  name: { type: Sequelize.STRING },
-});
-
-const OpenLayerCampaignModel = db.define('open_layer_campaign', {
   id: { type: Sequelize.STRING, primaryKey: true },
   name: { type: Sequelize.STRING },
 });

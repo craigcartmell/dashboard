@@ -10,6 +10,14 @@ const resolvers = {
     campaign(_, args) {
       return Campaign.find({ where: args })
     },
+    campaignsManualLatest(_) {
+      return Campaign
+        // .scope('manual')
+        .findAll({
+          limit: 5,
+        })
+        // .order('createdAt', 'desc')
+    }
   },
   Campaign: {
     client(campaign) {
