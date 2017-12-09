@@ -1,5 +1,5 @@
 import React from 'react'
-import Campaign from '../Campaign'
+import styles from './campaign-list.css'
 
 const CampaignList = ({ data: {loading, error, campaigns } = {}}) => {
   if (loading) {
@@ -9,7 +9,7 @@ const CampaignList = ({ data: {loading, error, campaigns } = {}}) => {
     return <p>{error.message}</p>;
   }
 
-  return campaigns.map((c, k) => <Campaign campaign={c} key={k}/>)
+  return <ul className={styles.list}>{campaigns.map((c, k) => <li className={styles.listItem} key={k}>{c.name}</li>)}</ul>
 }
 
 export default CampaignList

@@ -1,9 +1,11 @@
-import { Campaign } from './connectors'
+import {Campaign, Client, OpenLayerCampaign} from './connectors'
 
 const resolvers = {
   Query: {
     campaigns(_) {
-      return Campaign.findAll()
+      return Campaign.findAll({
+        limit: 5,
+      })
     },
     campaign(_, args) {
       return Campaign.find({ where: args })
@@ -13,6 +15,9 @@ const resolvers = {
     client(campaign) {
       return campaign.getClient()
     },
+    openLayerCampaigns(campaign) {
+      return campaign.getOpenLayerCampaigns()
+    }
   },
   Client: {
     campaign(client) {

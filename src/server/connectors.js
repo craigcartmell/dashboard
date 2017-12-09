@@ -19,10 +19,18 @@ const ClientModel = db.define('client', {
   name: { type: Sequelize.STRING },
 });
 
-CampaignModel.hasOne(ClientModel);
-ClientModel.belongsTo(CampaignModel);
+const OpenLayerCampaignModel = db.define('open_layer_campaign', {
+  id: { type: Sequelize.STRING, primaryKey: true },
+  name: { type: Sequelize.STRING },
+});
+
+CampaignModel.belongsTo(ClientModel, {foreignKey: 'client_id'})
+CampaignModel.hasMany(OpenLayerCampaignModel, {foreignKey: 'campaign_id', sourceKey: 'id', as: 'openLayerCampaigns'});
+ClientModel.hasOne(CampaignModel, {foreignKey: 'client_id'})
+OpenLayerCampaignModel.hasOne(CampaignModel, {foreignKey: 'id', sourceKey: 'campaign_id'});
 
 const Campaign = db.models.campaign;
 const Client = db.models.client;
+const OpenLayerCampaign = db.models.openLayerCampaigns;
 
-export { Campaign, Client };
+export { Campaign, Client, OpenLayerCampaign };

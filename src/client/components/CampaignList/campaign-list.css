@@ -1,0 +1,15 @@
+.component {
+    background-color: config('colors.grey-darker');
+    padding: 10px;
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    list-style: none;
+    color: config('colors.white');
+    margin-bottom: 10px;
+}

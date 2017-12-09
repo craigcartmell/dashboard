@@ -1,0 +1,11 @@
+.component {
+    background-color: config('colors.blue-darkest');
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.title {
+    color: config('colors.pink-dark');
+    margin-bottom: 10px;
+}
