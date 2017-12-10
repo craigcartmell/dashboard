@@ -1,14 +1,9 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
 import styles from './app.css'
 
-import Default from '../Dashboards/Default'
-import CampaignsByBusinessUnitWithData from '../Dashboards/CampaignsByBusinessUnitWithData'
-
-const App =() =>
+const App = ({children}) =>
   <div className={styles.component}>
-    <Route component={Default}/>
-    <Route path="campaigns-by-business-unit" component={CampaignsByBusinessUnitWithData}/>
+    {children}
   </div>
 
 export default App

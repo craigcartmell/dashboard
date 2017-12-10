@@ -17,7 +17,18 @@ const resolvers = {
     campaignsByBusinessUnit(_, args) {
       const {limit = 5} = args
 
-      return BusinessUnit.query().eager('campaigns').limit(limit).orderBy('name', 'ASC').then()
+      return BusinessUnit.query()
+        .eager('campaigns', builder => {
+          builder.limit(5)
+      }).whereExists(function() {
+          this
+            .select('*')
+            .from('business_unit_campaign')
+            .whereRaw('business_units.id = business_unit_campaign.business_unit_id');
+        })
+        .limit(limit)
+        .orderBy('name', 'DESC')
+        .then()
     },
     campaign(_, args) {
       return Campaign.query().findById(args.id).then()

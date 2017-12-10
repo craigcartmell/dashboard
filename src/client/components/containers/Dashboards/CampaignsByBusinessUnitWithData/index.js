@@ -5,14 +5,17 @@ import gql from 'graphql-tag'
 import CampaignsByBusinessUnit from '../../../../components/presentational/Dashboards/CampaignsByBusinessUnit'
 
 const campaignsByBusinessUnitQuery = gql`
-   query campaignsByBusinessUnitQuery {
-     campaignsByBusinessUnit {
-       id
-       name
-       campaigns
-     }
-   }
- `;
+  query campaignsByBusinessUnitQuery {
+    campaignsByBusinessUnit(limit:100) {
+      id
+      name
+      campaigns {
+        id
+        name
+      }
+    }
+  }
+ `
 
 const CampaignsByBusinessUnitWithData = graphql(campaignsByBusinessUnitQuery)(CampaignsByBusinessUnit);
 
