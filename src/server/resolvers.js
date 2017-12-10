@@ -1,17 +1,23 @@
 import Campaign from './models/Campaign'
 import FailedJob from "./models/FailedJob"
+import BusinessUnit from "./models/BusinessUnit"
 
 const resolvers = {
   Query: {
     campaigns(_, args) {
       const {limit = 5} = args
 
-      return Campaign.query().limit(limit).then()
+      return Campaign.query().eager('client').limit(limit).then()
     },
     campaignsManual(_, args) {
       const {limit = 5} = args
 
-      return Campaign.query().applyFilter('manual').limit(limit).orderBy('created_at', 'DESC').then()
+      return Campaign.query().eager('client').applyFilter('manual').limit(limit).orderBy('created_at', 'DESC').then()
+    },
+    campaignsByBusinessUnit(_, args) {
+      const {limit = 5} = args
+
+      return BusinessUnit.query().eager('campaigns').limit(limit).orderBy('name', 'ASC').then()
     },
     campaign(_, args) {
       return Campaign.query().findById(args.id).then()
@@ -44,6 +50,11 @@ const resolvers = {
   Client: {
     campaign(client) {
       return client.$relatedQuery('campaign').then()
+    },
+  },
+  BusinessUnit: {
+    campaigns(businessUnit) {
+      return businessUnit.$relatedQuery('campaigns').then()
     },
   },
   FailedJob: {

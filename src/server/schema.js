@@ -15,6 +15,11 @@ type Client {
   name: String
   campaign: Campaign
 }
+type BusinessUnit {
+  id: String!
+  name: String
+  campaigns: [Campaign]
+}
 type OpenLayerCampaign {
   id: String!
   name: String
@@ -29,6 +34,7 @@ type FailedJob {
 type Query {
   campaigns(limit: Int): [Campaign]
   campaignsManual(limit: Int): [Campaign]
+  campaignsByBusinessUnit(limit: Int): [BusinessUnit]
   campaign(id: String!): Campaign
   failedJobs(limit: Int): [FailedJob]
 }
