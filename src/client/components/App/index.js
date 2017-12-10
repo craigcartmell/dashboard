@@ -25,7 +25,7 @@ const CampaignListWithData = graphql(campaignsQuery)(CampaignList);
 
 const failedJobsQuery = gql`
    query failedJobsQuery {
-     failedJobs {
+     failedJobs(limit: 3) {
        id
        payload
        exception

@@ -1,5 +1,5 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import resolvers from './resolvers';
+import { makeExecutableSchema } from 'graphql-tools'
+import resolvers from './resolvers'
 // import GraphQLJSON from 'graphql-type-json';
 
 const typeDefs = `
@@ -27,11 +27,11 @@ type FailedJob {
   failed_at: String
 }
 type Query {
-  campaigns: [Campaign]
-  campaignsManual: [Campaign]
+  campaigns(limit: Int): [Campaign]
+  campaignsManual(limit: Int): [Campaign]
   campaign(id: String!): Campaign
-  failedJobs: [FailedJob]
+  failedJobs(limit: Int): [FailedJob]
 }
-`;
+`
 
-export default makeExecutableSchema({ typeDefs, resolvers });
+export default makeExecutableSchema({ typeDefs, resolvers })
