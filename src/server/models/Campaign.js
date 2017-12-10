@@ -1,4 +1,5 @@
 import {Model} from 'objection'
+import moment from 'moment'
 import Client from "./Client"
 import OpenLayerCampaign from "./OpenLayerCampaign"
 
@@ -9,12 +10,16 @@ class Campaign extends Model {
 
   static get namedFilters() {
     return {
-      manual: (builder) => builder.whereNotExists(function() {
+      manual: (builder) => builder.whereNotExists(function () {
         this
           .select('*')
           .from('open_layer_campaigns')
           .whereRaw('campaigns.id = open_layer_campaigns.campaign_id');
-    })}
+      }),
+      started: (builder) => builder.where('starts_at', '<=', moment().add(1, 'days').format('Y-MM-DD')),
+      ongoing: (builder) => builder.where('ends_at', '>=', moment().subtract(1, 'days').format('Y-MM-DD')),
+      live: (builder) => builder.applyFilter('started').applyFilter('ongoing')
+    }
   }
 
   // Optional JSON schema. This is not the database schema!
@@ -30,6 +35,7 @@ class Campaign extends Model {
       properties: {
         id: {type: 'string'},
         name: {type: 'string'},
+        starts_at: {type: 'dateTime'},
         created_at: {type: 'dateTime'},
       }
     }

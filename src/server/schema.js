@@ -6,6 +6,7 @@ const typeDefs = `
 type Campaign {
   id: String!
   name: String
+  starts_at: String
   created_at: String
   client: Client
   openLayerCampaigns: [OpenLayerCampaign]
@@ -35,6 +36,7 @@ type Query {
   campaigns(limit: Int): [Campaign]
   campaignsManual(limit: Int): [Campaign]
   campaignsByBusinessUnit(limit: Int): [BusinessUnit]
+  campaignsUpcoming: [Campaign]
   campaign(id: String!): Campaign
   failedJobs(limit: Int): [FailedJob]
 }

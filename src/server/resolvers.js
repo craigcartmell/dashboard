@@ -1,3 +1,5 @@
+import moment from 'moment'
+import {lodash as _} from 'objection'
 import Campaign from './models/Campaign'
 import FailedJob from "./models/FailedJob"
 import BusinessUnit from "./models/BusinessUnit"
@@ -7,19 +9,28 @@ const resolvers = {
     campaigns(_, args) {
       const {limit = 5} = args
 
-      return Campaign.query().eager('client').limit(limit).then()
+      return Campaign.query().eager('client').applyFilter('live').limit(limit).then()
     },
     campaignsManual(_, args) {
       const {limit = 5} = args
 
-      return Campaign.query().eager('client').applyFilter('manual').limit(limit).orderBy('created_at', 'DESC').then()
+      return Campaign
+        .query()
+        .eager('client')
+        .where('is_active', true)
+        .applyFilter('manual')
+        .applyFilter('live')
+        .limit(limit)
+        .orderBy('created_at', 'DESC')
+        .then()
     },
     campaignsByBusinessUnit(_, args) {
       const {limit = 5} = args
 
       return BusinessUnit.query()
+        .allowEager('[campaigns]')
         .eager('campaigns', builder => {
-          builder.limit(5)
+          builder.limit(5).orderBy('created_at', 'DESC')
       }).whereExists(function() {
           this
             .select('*')
@@ -28,6 +39,13 @@ const resolvers = {
         })
         .limit(limit)
         .orderBy('name', 'DESC')
+        .then()
+    },
+    campaignsUpcoming(_, args) {
+      return Campaign
+        .query()
+        .where('starts_at', '>', moment().format('Y-MM-DD'))
+        .orderBy('starts_at', 'ASC')
         .then()
     },
     campaign(_, args) {

@@ -12,6 +12,7 @@ const campaignsByBusinessUnitQuery = gql`
       campaigns {
         id
         name
+        created_at
       }
     }
   }
