@@ -6,6 +6,7 @@ import styles from './app.css'
 
 import CampaignList from '../CampaignList'
 import GridItem from '../GridItem'
+import FailedJobList from "../FailedJobList"
 
 const campaignsQuery = gql`
    query campaignsManualQuery {
@@ -22,6 +23,19 @@ const campaignsQuery = gql`
 
 const CampaignListWithData = graphql(campaignsQuery)(CampaignList);
 
+const failedJobsQuery = gql`
+   query failedJobsQuery {
+     failedJobs {
+       id
+       payload
+       exception
+       failed_at
+     }
+   }
+ `;
+
+const FailedJobsWithData = graphql(failedJobsQuery)(FailedJobList);
+
 export default class extends React.Component {
   render () {
     return <div className={styles.component}>
@@ -30,8 +44,8 @@ export default class extends React.Component {
           <CampaignListWithData/>
         </GridItem>
 
-        <GridItem className="flex-2" title="Latest Failed Jobs">
-          <CampaignListWithData/>
+        <GridItem className="flex-1" title="Latest Failed Jobs">
+          <FailedJobsWithData/>
         </GridItem>
       </div>
       <div className={styles.grid + " flex md:flex-row-reverse flex-wrap"}>

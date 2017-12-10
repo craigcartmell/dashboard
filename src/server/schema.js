@@ -1,5 +1,6 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import resolvers from './resolvers';
+// import GraphQLJSON from 'graphql-type-json';
 
 const typeDefs = `
 type Campaign {
@@ -19,10 +20,17 @@ type OpenLayerCampaign {
   name: String
   campaign: Campaign
 }
+type FailedJob {
+  id: String!
+  payload: String
+  exception: String
+  failed_at: String
+}
 type Query {
   campaigns: [Campaign]
   campaignsManual: [Campaign]
   campaign(id: String!): Campaign
+  failedJobs: [FailedJob]
 }
 `;
 
