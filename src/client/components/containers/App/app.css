@@ -11,7 +11,7 @@
  *
  * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
  */
-@import "../../stylesheets/tailwind-preflight.css";
+@import "../../../stylesheets/tailwind-preflight.css";
 
 /**
  * Here you would add any of your custom component classes; stuff that you'd
@@ -39,7 +39,7 @@
  *
  * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
  */
-@import "../../stylesheets/tailwind-utilities.css";
+@import "../../../stylesheets/tailwind-utilities.css";
 
 /**
  * Here you would add any custom utilities you need that don't come out of the
