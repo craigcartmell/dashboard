@@ -6,6 +6,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './router';
 
+// require('./stylesheets/bundle.css')
+
 const client = new ApolloClient({
   // By default, this client will send queries to the
   //  `/graphql` endpoint on the same host

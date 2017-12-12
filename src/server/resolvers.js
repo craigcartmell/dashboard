@@ -1,5 +1,4 @@
 import moment from 'moment'
-import {lodash as _} from 'objection'
 import Campaign from './models/Campaign'
 import FailedJob from "./models/FailedJob"
 import BusinessUnit from "./models/BusinessUnit"

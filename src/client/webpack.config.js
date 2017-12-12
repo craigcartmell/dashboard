@@ -7,7 +7,7 @@ var appUrl = 'http://localhost:8080' // require("./helpers").appUrl
 module.exports = {
   entry: {
     // app: path.resolve(__dirname, "./index.js"),
-    index: [
+    app: [
       "babel-polyfill",
       // activate HMR for React
       "react-hot-loader/patch",
@@ -20,11 +20,12 @@ module.exports = {
       // the entry point of our app
       "./index.js",
     ],
+    style: './stylesheets/bundle.css',
   },
   context: path.resolve(__dirname),
   output: {
     publicPath: appUrl,
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname),
   },
   module: {
@@ -59,8 +60,8 @@ module.exports = {
             },
           },
           {
-            loader: 'postcss-loader'
-          }
+            loader: "postcss-loader",
+          },
         ]
       }
     ],

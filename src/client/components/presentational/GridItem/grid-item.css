@@ -1,9 +1,9 @@
 .component {
-    background-color: config('colors.grey-darkest');
+    @apply .rounded-lg;
     padding: 10px;
-    border-radius: 4px;
     margin-bottom: 10px;
     border-bottom: 2px solid config('colors.pink-dark');
+    background-color: config('colors.grey-darkest');
 }
 
 .component ~.component {
@@ -13,4 +13,8 @@
 .title {
     color: config('colors.pink-dark');
     margin-bottom: 10px;
+}
+
+.titleWithSomething {
+    @apply .title;
 }
