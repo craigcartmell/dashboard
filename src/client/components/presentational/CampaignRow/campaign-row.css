@@ -1,0 +1,22 @@
+.listItem {
+    display: block;
+    color: config('colors.white');
+    min-height: 90px;
+    height: auto;
+    background-color: config('colors.grey-darker');
+    padding: 10px;
+    border-radius: 1px;
+}
+
+.listItem:nth-child(even) {
+    background-color: config('colors.grey-dark');
+}
+
+.listItem:first-child {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.listItem:last-child {
+
+}

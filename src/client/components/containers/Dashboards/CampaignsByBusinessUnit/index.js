@@ -13,11 +13,12 @@ const campaignsByBusinessUnitQuery = gql`
         id
         name
         created_at
+        client {
+          name
+        }
       }
     }
   }
  `
 
-const CampaignsByBusinessUnitWithData = graphql(campaignsByBusinessUnitQuery)(CampaignsByBusinessUnit);
-
-export default CampaignsByBusinessUnitWithData
+export default graphql(campaignsByBusinessUnitQuery)(CampaignsByBusinessUnit);

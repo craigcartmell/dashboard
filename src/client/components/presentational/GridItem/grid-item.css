@@ -1,5 +1,4 @@
 .component {
-    @apply .rounded-lg;
     padding: 10px;
     margin-bottom: 10px;
     border-bottom: 2px solid config('colors.pink-dark');

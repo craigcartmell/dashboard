@@ -7,10 +7,12 @@ import styles from './default.css'
 import CampaignList from '../../../presentational/CampaignList'
 import GridItem from '../../../presentational/GridItem'
 import FailedJobList from "../../../presentational/FailedJobList"
+import Title from "../../../presentational/Dashboards/Title"
+import Grid from "../../../presentational/Grid"
 
 const campaignsQuery = gql`
    query campaignsManualQuery {
-     campaignsManual {
+     campaigns: campaignsManual {
        id
        name
        created_at
@@ -36,9 +38,12 @@ const failedJobsQuery = gql`
 
 const FailedJobsWithData = graphql(failedJobsQuery)(FailedJobList);
 
+const Aux = props => props.children
+
 const Default = () =>
-  <div>
-    <div className={styles.grid + " flex md:flex-row-reverse flex-wrap"}>
+  <Aux>
+    <Title title="Dashboard"/>
+    <Grid>
       <GridItem className="flex-1" title="Latest Manual Campaigns">
         <CampaignListWithData/>
       </GridItem>
@@ -46,7 +51,7 @@ const Default = () =>
       <GridItem className="flex-1" title="Latest Failed Jobs">
         <FailedJobsWithData/>
       </GridItem>
-    </div>
-</div>
+    </Grid>
+  </Aux>
 
 export default Default

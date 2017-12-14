@@ -1,0 +1,3 @@
+.component {
+   color: config('colors.pink-dark');
+}

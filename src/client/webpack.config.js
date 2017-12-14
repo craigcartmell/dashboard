@@ -20,7 +20,8 @@ module.exports = {
       // the entry point of our app
       "./index.js",
     ],
-    style: './stylesheets/bundle.css',
+    // tachyons: 'tachyons/css/tachyons.css',
+    // index: './stylesheets/bundle.css',
   },
   context: path.resolve(__dirname),
   output: {
@@ -39,9 +40,28 @@ module.exports = {
           },
         ]
       },
+      // {
+      //   test: /\.css$/,
+      //   include: path.resolve(__dirname, "node_modules/tailwindcss"),
+      //   // include: path.resolve(__dirname, "node_modules/tachyons/css/"),
+      //   use: [
+      //     {
+      //       loader: "style-loader",
+      //       options: {
+      //         sourceMap: true,
+      //       }
+      //     },
+      //     {
+      //       loader: "css-loader",
+      //     },
+      //     {
+      //       loader: "postcss-loader",
+      //     },
+      //   ]
+      // },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: path.resolve(__dirname, "node_modules"),
         use: [
           {
             loader: "style-loader",
@@ -52,18 +72,19 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              minimize: true,
+              // import: false,
+              // minimize: true,
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: "[name]__[local]___[hash:base64:5]",
+              localIdentName: "[name]-[local][hash:base64:5]",
             },
           },
           {
             loader: "postcss-loader",
           },
         ]
-      }
+      },
     ],
   },
   resolve: {
