@@ -1,4 +1,6 @@
+import knex from 'knex'
 import moment from 'moment'
+
 import Campaign from './models/Campaign'
 import FailedJob from "./models/FailedJob"
 import BusinessUnit from "./models/BusinessUnit"
@@ -27,17 +29,24 @@ const resolvers = {
       const {limit = 5} = args
 
       return BusinessUnit.query()
+        .select('id', 'name')
+        .select(knex.raw('(' +
+          'SELECT COUNT(business_unit_campaign.business_unit_id) from business_unit_campaign' +
+          ' WHERE business_unit_campaign.business_unit_id = business_units.id' +
+          ' GROUP BY business_unit_campaign.business_unit_id) AS campaigns_count'))
         .allowEager('[campaigns]')
         .eager('campaigns', builder => {
           builder.limit(5).orderBy('created_at', 'DESC')
       }).whereExists(function() {
           this
-            .select('*')
+            .select('id')
             .from('business_unit_campaign')
             .whereRaw('business_units.id = business_unit_campaign.business_unit_id');
         })
         .limit(limit)
-        .orderBy('name', 'DESC')
+        .orderBy('campaigns_count', 'DESC')
+        // Our most important business units
+        .orderByRaw('FIELD(id, "no", "gb", "se", "au") DESC')
         .then()
     },
     campaignsUpcoming(_, args) {
