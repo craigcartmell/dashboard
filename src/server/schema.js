@@ -6,6 +6,7 @@ type Campaign {
   id: String!
   name: String
   starts_at: String
+  ends_at: String
   created_at: String
   client: Client
   openLayerCampaigns: [OpenLayerCampaign]
@@ -18,7 +19,7 @@ type Client {
 type BusinessUnit {
   id: String!
   name: String
-  campaigns(limit: Int): [Campaign]
+  campaigns(offset: Int, limit: Int): [Campaign]
 }
 type OpenLayerCampaign {
   id: String!
@@ -34,7 +35,7 @@ type FailedJob {
 type Query {
   campaigns(limit: Int): [Campaign]
   campaignsManual(limit: Int): [Campaign]
-  campaignsByBusinessUnit(limit: Int): [BusinessUnit]
+  campaignsByBusinessUnit(offset: Int, limit: Int): [BusinessUnit]
   campaignsUpcoming: [Campaign]
   campaign(id: String!): Campaign
   failedJobs(limit: Int): [FailedJob]

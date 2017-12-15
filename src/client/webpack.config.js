@@ -124,6 +124,6 @@ module.exports = {
     inline: true,
     // port: '8080',
     https: false,
-    publicPath: '/',
+    publicPath: appUrl,
   },
 }

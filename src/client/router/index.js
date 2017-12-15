@@ -12,7 +12,7 @@ const Router = () => (
   <BrowserRouter>
     <App>
       <Route exact path="/" component={Default}/>
-      <Route path="/campaigns-by-business-unit" component={CampaignsByBusinessUnit}/>
+      <Route path="/campaigns-by-business-unit/:pageNumber?" component={CampaignsByBusinessUnit}/>
     </App>
 
   </BrowserRouter>

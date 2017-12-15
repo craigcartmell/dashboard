@@ -26,7 +26,7 @@ const resolvers = {
         .then()
     },
     campaignsByBusinessUnit(_, args) {
-      const {limit = 5} = args
+      const {offset = 5, limit = 5} = args
 
       return BusinessUnit.query()
         .allowEager('campaigns')
@@ -36,6 +36,7 @@ const resolvers = {
           'SELECT COUNT(business_unit_campaign.business_unit_id) from business_unit_campaign' +
           ' WHERE business_unit_campaign.business_unit_id = business_units.id' +
           ' GROUP BY business_unit_campaign.business_unit_id) AS campaigns_count'))
+        .offset(offset)
         .limit(limit)
         .orderBy('campaigns_count', 'DESC')
         // Our most important business units

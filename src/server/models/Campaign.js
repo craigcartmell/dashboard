@@ -36,6 +36,7 @@ class Campaign extends Model {
         id: {type: 'string'},
         name: {type: 'string'},
         starts_at: {type: 'dateTime'},
+        ends_at: {type: 'dateTime'},
         created_at: {type: 'dateTime'},
       }
     }
