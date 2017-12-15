@@ -29,6 +29,8 @@ const resolvers = {
       const {limit = 5} = args
 
       return BusinessUnit.query()
+        .allowEager('campaigns')
+        .eager('campaigns')
         .select('business_units.id', 'business_units.name')
         .select(knex.raw('(' +
           'SELECT COUNT(business_unit_campaign.business_unit_id) from business_unit_campaign' +

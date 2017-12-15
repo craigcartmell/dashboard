@@ -1,6 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import resolvers from './resolvers'
-// import GraphQLJSON from 'graphql-type-json';
 
 const typeDefs = `
 type Campaign {
