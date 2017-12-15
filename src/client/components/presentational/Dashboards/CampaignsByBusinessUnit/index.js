@@ -10,7 +10,7 @@ const Aux = props => props.children
 
 const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUnit} }) =>
   <Aux>
-    <Title title="Live Campaigns by Business Unit" key="1"/>
+    <Title title="Live Campaigns by Business Unit"/>
     <Grid>
       {campaignsByBusinessUnit && campaignsByBusinessUnit.map((businessUnit, k) =>
         <GridItem title={businessUnit.name + " (" + businessUnit.campaigns.length + ")"} key={k}>
