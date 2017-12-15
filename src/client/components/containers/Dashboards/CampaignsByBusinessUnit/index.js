@@ -25,12 +25,16 @@ const campaignsByBusinessUnitQuery = gql`
 
 const CampaignsByBusinessUnitWithData = graphql(campaignsByBusinessUnitQuery, {
   options: ownProps => {
+    const limit = 8
+    let offset = 0
     let {match: {params: {pageNumber}}} = ownProps
 
     pageNumber = parseInt(pageNumber)
+    pageNumber = isNaN(pageNumber) ? 1 : pageNumber
 
-    const limit = 8
-    const offset = (pageNumber - 1) * limit + 1
+    if (pageNumber > 1) {
+      offset = pageNumber ? (pageNumber - 1) * limit : 0
+    }
 
     return {
       variables: {
