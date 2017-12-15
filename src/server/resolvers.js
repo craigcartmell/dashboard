@@ -29,24 +29,15 @@ const resolvers = {
       const {limit = 5} = args
 
       return BusinessUnit.query()
-        .select('id', 'name')
+        .select('business_units.id', 'business_units.name')
         .select(knex.raw('(' +
           'SELECT COUNT(business_unit_campaign.business_unit_id) from business_unit_campaign' +
           ' WHERE business_unit_campaign.business_unit_id = business_units.id' +
           ' GROUP BY business_unit_campaign.business_unit_id) AS campaigns_count'))
-        .allowEager('[campaigns]')
-        .eager('campaigns', builder => {
-          builder.limit(5).orderBy('created_at', 'DESC')
-      }).whereExists(function() {
-          this
-            .select('id')
-            .from('business_unit_campaign')
-            .whereRaw('business_units.id = business_unit_campaign.business_unit_id');
-        })
         .limit(limit)
         .orderBy('campaigns_count', 'DESC')
         // Our most important business units
-        .orderByRaw('FIELD(id, "no", "gb", "se", "au") DESC')
+        .orderByRaw('FIELD(business_units.id, "no", "gb", "se", "au") DESC')
         .then()
     },
     campaignsUpcoming(_, args) {
@@ -90,8 +81,10 @@ const resolvers = {
     },
   },
   BusinessUnit: {
-    campaigns(businessUnit) {
-      return businessUnit.$relatedQuery('campaigns').then()
+    campaigns(businessUnit, args) {
+      const {limit = 5} = args
+
+      return businessUnit.$relatedQuery('campaigns').limit(limit).then()
     },
   },
   FailedJob: {

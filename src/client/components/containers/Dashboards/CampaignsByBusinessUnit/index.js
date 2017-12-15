@@ -9,7 +9,7 @@ const campaignsByBusinessUnitQuery = gql`
     campaignsByBusinessUnit(limit:100) {
       id
       name
-      campaigns {
+      campaigns(limit:5) {
         id
         name
         created_at

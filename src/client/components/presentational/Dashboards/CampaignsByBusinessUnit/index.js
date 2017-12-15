@@ -15,7 +15,7 @@ const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUni
       {campaignsByBusinessUnit && campaignsByBusinessUnit.map((businessUnit, k) =>
         <GridItem title={businessUnit.name + " (" + businessUnit.campaigns.length + ")"} key={k}>
           <div className={styles.list}>
-            {businessUnit.campaigns.slice(0,5).map((campaign) =>
+            {businessUnit.campaigns.map((campaign) =>
               <CampaignRow campaign={campaign} key={campaign.id}/>
             )}
           </div>

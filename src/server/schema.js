@@ -19,7 +19,7 @@ type Client {
 type BusinessUnit {
   id: String!
   name: String
-  campaigns: [Campaign]
+  campaigns(limit: Int): [Campaign]
 }
 type OpenLayerCampaign {
   id: String!
