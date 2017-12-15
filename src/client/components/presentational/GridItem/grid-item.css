@@ -1,8 +1,8 @@
 .component {
-    padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid config('colors.grey');
     border-bottom: 2px solid config('colors.pink-dark');
-    background-color: config('colors.grey-darkest');
+    background-color: config('colors.white');
 }
 
 .component ~.component {
@@ -10,8 +10,10 @@
 }
 
 .title {
-    color: config('colors.pink-dark');
+    background-color: config('colors.grey-light');
+    color: config('colors.grey-darkest');
     margin-bottom: 10px;
+    padding: 10px;
 }
 
 .titleWithSomething {

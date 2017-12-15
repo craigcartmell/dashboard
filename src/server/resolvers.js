@@ -47,6 +47,7 @@ const resolvers = {
       return Campaign
         .query()
         .where('starts_at', '>', moment().format('Y-MM-DD'))
+        .whereRaw('starts_at < DATE_ADD(CURDATE(), INTERVAL 7 DAY)')
         .orderBy('starts_at', 'ASC')
         .then()
     },
