@@ -9,6 +9,7 @@ class App extends React.Component {
 
   static dashboardRoutes = [
     '/',
+    '/campaigns-upcoming',
     '/campaigns-by-business-unit/1',
     '/campaigns-by-business-unit/2',
     '/campaigns-by-business-unit/3',
@@ -18,18 +19,18 @@ class App extends React.Component {
   componentDidMount() {
     const {history} = this.props
 
-    // setInterval(() => {
-    //   let nextRouteIndex = this.state.lastRouteIndex + 1
-    //   nextRouteIndex = nextRouteIndex > App.dashboardRoutes.length ? 0 : nextRouteIndex
-    //
-    //   const nextRoute = App.dashboardRoutes[nextRouteIndex]
-    //
-    //   this.setState({
-    //     lastRouteIndex: nextRouteIndex,
-    //   })
-    //
-    //   return history.push(nextRoute)
-    // }, 10000)
+    setInterval(() => {
+      let nextRouteIndex = this.state.lastRouteIndex + 1
+      nextRouteIndex = nextRouteIndex > App.dashboardRoutes.length ? 0 : nextRouteIndex
+
+      const nextRoute = App.dashboardRoutes[nextRouteIndex]
+
+      this.setState({
+        lastRouteIndex: nextRouteIndex,
+      })
+
+      return history.push(nextRoute)
+    }, 10000)
   }
 
   render() {
