@@ -36,6 +36,12 @@ const resolvers = {
           'SELECT COUNT(business_unit_campaign.business_unit_id) from business_unit_campaign' +
           ' WHERE business_unit_campaign.business_unit_id = business_units.id' +
           ' GROUP BY business_unit_campaign.business_unit_id) AS campaigns_count'))
+        .whereExists(function() {
+          this
+            .select('*')
+            .from('business_unit_campaign')
+            .whereRaw('business_units.id = business_unit_campaign.business_unit_id');
+        })
         .offset(offset)
         .limit(limit)
         .orderBy('campaigns_count', 'DESC')
