@@ -1,21 +1,23 @@
 .component {
-    margin-bottom: 10px;
-    border: 1px solid config('colors.grey');
-    border-bottom: 2px solid config('colors.pink-dark');
-    background-color: config('colors.white');
+    background-color: config('colors.teal-dark');
+    color: config('colors.white');
 }
 
-.component ~.component {
-    margin-left: 10px;
+.component:nth-child(2) {
+    background-color: config('colors.blue-dark');
+    color: config('colors.white');
 }
 
-.title {
-    background-color: config('colors.grey-light');
-    color: config('colors.grey-darkest');
-    margin-bottom: 10px;
-    padding: 10px;
+.component:nth-child(3) {
+    background-color: config('colors.pink-dark');
+    color: config('colors.white');
 }
 
-.titleWithSomething {
-    @apply .title;
+.component:nth-child(4) {
+    background-color: config('colors.orange-dark');
+    color: config('colors.white');
+}
+
+.titleContainer {
+    background-color: transparent;
 }

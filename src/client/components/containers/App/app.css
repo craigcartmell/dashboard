@@ -4,5 +4,4 @@
     height: 100%;
     overflow: hidden;
     background-color: config('colors.grey-darkest');
-    padding: 20px;
 }

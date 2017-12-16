@@ -25,7 +25,7 @@ const campaignsByBusinessUnitQuery = gql`
 
 const CampaignsByBusinessUnitWithData = graphql(campaignsByBusinessUnitQuery, {
   options: ownProps => {
-    const limit = 8
+    const limit = 4
     let offset = 0
     let {match: {params: {pageNumber}}} = ownProps
 

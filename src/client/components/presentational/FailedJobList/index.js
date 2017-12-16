@@ -19,8 +19,8 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
       } catch(e) {
       }
 
-      return <div className={styles.listItem} key={k}>
-        <div style={{width: '70%', float: 'left', marginBottom: '14px'}}>
+      return <div className="w-full flex-1" key={k}>
+        <div style={{float: 'left', marginBottom: '14px'}}>
           <h5>{payload.displayName}</h5>
         </div>
         <div style={{float: 'right'}}>

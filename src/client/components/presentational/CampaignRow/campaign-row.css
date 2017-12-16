@@ -1,23 +1,8 @@
 .listItem {
     display: block;
-    color: config('colors.grey-darker');
     min-height: 90px;
     height: auto;
-    background-color: config('colors.white');
+    background-color: transparent;
     padding: 10px;
-    border-radius: 1px;
     border-bottom: 1px solid  config('colors.grey-light');
-}
-
-.listItem:nth-child(even) {
-    background-color: config('colors.white');
-}
-
-.listItem:first-child {
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-}
-
-.listItem:last-child {
-
 }
