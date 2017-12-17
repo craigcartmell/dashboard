@@ -2,7 +2,11 @@
     display: block;
     min-height: 90px;
     height: auto;
-    background-color: transparent;
-    padding: 10px;
-    border-bottom: 1px solid  config('colors.grey-light');
+    background-color: inherit;
+}
+
+.listItem:nth-child(odd) {
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(37, 37, 37, 0.2);
 }

@@ -21,3 +21,7 @@
 .titleContainer {
     background-color: transparent;
 }
+
+.title {
+    color: config('colors.grey-darkest');
+}

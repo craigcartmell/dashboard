@@ -19,12 +19,14 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
       } catch(e) {
       }
 
-      return <div className="w-full flex-1" key={k}>
-        <div style={{float: 'left', marginBottom: '14px'}}>
-          <h5>{payload.displayName}</h5>
-        </div>
-        <div style={{float: 'right'}}>
-          <h5>{moment(j["failed_at"]).fromNow()}</h5>
+      return <div className={styles.listItem}>
+        <div className="flex w-full flex-no-wrap px-4 py-4 h-200" key={k}>
+          <div className="flex-1">
+            <h5>{payload.displayName}</h5>
+          </div>
+          <div className="flex-2">
+            <h5>{moment(j["failed_at"]).fromNow()}</h5>
+          </div>
         </div>
       </div>
     }

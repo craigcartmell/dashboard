@@ -44,12 +44,11 @@ const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUni
   return <Aux>
     <Title title="Live Campaigns by Business Unit"/>
     <Grid>
-        <ResponsiveContainer width={'100%'} height="100%">
-          <PieChart>
+          <PieChart width={800} height={400}>
             <Pie
               data={data}
               cx={'20%'}
-              cy={'20%'}
+              cy={'40%'}
               labelLine={false}
               label={(item) =>`${item.businessUnit.id.toUpperCase()}`}
               // label={renderCustomizedLabel}
@@ -61,7 +60,6 @@ const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUni
               }
             </Pie>
           </PieChart>
-        </ResponsiveContainer>
     </Grid>
   </Aux>
 }

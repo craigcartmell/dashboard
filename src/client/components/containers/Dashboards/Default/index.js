@@ -48,7 +48,7 @@ const Default = () =>
         <CampaignListWithData/>
       </GridItem>
 
-      <GridItem className="flex-1" title="Latest Failed Jobs">
+      <GridItem className="flex-2" title="Latest Failed Jobs">
         <FailedJobsWithData/>
       </GridItem>
     </Grid>

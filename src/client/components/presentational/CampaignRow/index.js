@@ -4,17 +4,15 @@ import styles from './campaign-row.css'
 
 const CampaignRow = ({campaign}) => {
   return <div className={styles.listItem}>
-    <div style={{display:'inline-block', width: '100%'}}>
-      <div style={{float: 'left', marginBottom: '14px'}}>
-        <h4>{campaign.name}</h4>
-        <h5>{campaign.client.name}</h5>
-      </div>
-      <div style={{float: 'right'}}>
-        <h5>Created {moment(campaign["created_at"]).fromNow()}</h5>
+    <div className="flex w-full flex-no-wrap px-4 py-4">
+      <div>
+        <span className="block text-md font-bold h-auto">{campaign.name}</span>
+        <span className="block text-sm">{campaign.client.name}</span>
       </div>
     </div>
-    <div style={{display: 'block'}}>
-      {moment(campaign["starts_at"]).format('Y-MM-DD')} - {moment(campaign["ends_at"]).format('Y-MM-DD')}
+    <div className="block flex px-4 py-4 text-sm">
+      <div className="flex-1">{moment(campaign["starts_at"]).format('Y-MM-DD')} - {moment(campaign["ends_at"]).format('Y-MM-DD')}</div>
+      <div className="flex-2">Created {moment(campaign["created_at"]).fromNow()}</div>
     </div>
   </div>
 }

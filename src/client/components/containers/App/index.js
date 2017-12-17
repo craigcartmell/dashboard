@@ -10,10 +10,10 @@ class App extends React.Component {
   static dashboardRoutes = [
     '/',
     '/campaigns-upcoming',
+    '/campaigns-by-business-unit-chart',
     '/campaigns-by-business-unit/1',
     '/campaigns-by-business-unit/2',
     '/campaigns-by-business-unit/3',
-    '/campaigns-by-business-unit/4',
   ]
 
   componentDidMount() {
