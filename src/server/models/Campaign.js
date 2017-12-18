@@ -1,7 +1,8 @@
 import {Model} from 'objection'
 import moment from 'moment'
-import Client from "./Client"
+import Client from './Client'
 import OpenLayerCampaign from "./OpenLayerCampaign"
+import DynamicDataSource from './DynamicDataSource'
 
 class Campaign extends Model {
   static get tableName() {
@@ -59,7 +60,15 @@ class Campaign extends Model {
           from: 'campaigns.id',
           to: 'open_layer_campaigns.campaign_id'
         }
-      }
+      },
+      dynamicDataSources: {
+        relation: Model.HasManyRelation,
+        modelClass: DynamicDataSource,
+        join: {
+          from: 'campaigns.id',
+          to: 'dynamic_data_sources.campaign_id',
+        }
+      },
     }
   }
 }
