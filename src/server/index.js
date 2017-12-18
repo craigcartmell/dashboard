@@ -4,13 +4,15 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import cors from 'cors'
 import schema from './schema'
 
+import env from './.env.json'
+
 // TODO: Move?
 require('./connectors')
 
-const PORT = 3000
 const app = express()
+const endpointURL = env.app.endpointURL
 
-app.use('/graphql', [cors(), bodyParser()], graphqlExpress({ schema }))
-app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
+app.use(endpointURL, [cors(), bodyParser()], graphqlExpress({ schema }))
+app.get(endpointURL, graphiqlExpress({ endpointURL }))
 
-app.listen(PORT)
+app.listen(env.app.port)

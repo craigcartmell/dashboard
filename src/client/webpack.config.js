@@ -1,7 +1,7 @@
 var webpack = require("webpack")
 var path = require("path")
-// var env = require("../.env.json")
-var appUrl = 'http://localhost:8080' // require("./helpers").appUrl
+var env = require("./.env.json")
+var appUrl = env.app.url
 
 // Define our base config
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       "react-hot-loader/patch",
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
-      "webpack-dev-server/client?http://localhost:8080",
+      `webpack-dev-server/client?${appUrl}`,
       // bundle the client for hot reloading
       // only- means to only hot reload for successful updates
       "webpack/hot/only-dev-server",

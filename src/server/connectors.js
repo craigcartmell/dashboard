@@ -1,17 +1,11 @@
 import objection from 'objection'
 import knex from 'knex'
+import env from './.env.json'
 
 const Model = objection.Model;
 
-const db = knex({
-  client: 'mysql',
-  connection: {
-    host : 'localhost',
-    user : 'homestead',
-    password : 'secret',
-    database : 'smartcontent-admin',
-    port: 33060,
-  }
-});
+const smartcontent = env.connectors.smartcontent
+
+const db = knex(smartcontent);
 
 Model.knex(db);
