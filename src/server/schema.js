@@ -10,6 +10,7 @@ type Campaign {
   created_at: String
   client: Client
   openLayerCampaigns: [OpenLayerCampaign]
+  dynamicDataSources: [DynamicDataSource]
 }
 type Client {
   id: String!
@@ -32,6 +33,12 @@ type FailedJob {
   exception: String
   failed_at: String
 }
+type DynamicDataSource {
+  id: String!
+  name: String
+  type: String
+  created_at: String
+}
 type Query {
   campaigns(limit: Int): [Campaign]
   campaignsManual(limit: Int): [Campaign]
@@ -39,6 +46,7 @@ type Query {
   campaignsUpcoming: [Campaign]
   campaign(id: String!): Campaign
   failedJobs(limit: Int): [FailedJob]
+  campaignsWithDynamicDataSources(limit: Int, type: String): [Campaign]
 }
 `
 

@@ -57,6 +57,24 @@ const resolvers = {
         .orderBy('starts_at', 'ASC')
         .then()
     },
+    campaignsWithDynamicDataSources(_, args) {
+      const {limit = 10, type = 'App\\DataProviders\\Twitter'} = args
+
+      return Campaign
+        .query()
+        .eager('client')
+        .eager('dynamicDataSources')
+        .where('is_active', true)
+        .applyFilter('live')
+        .whereExists(function() {
+          this.select('*')
+            .from('dynamic_data_sources')
+            .whereRaw('dynamic_data_sources.campaign_id = campaigns.id');
+        })
+        .limit(limit)
+        .orderBy('name', 'ASC')
+        .then()
+    },
     campaign(_, args) {
       return Campaign.query().findById(args.id).then()
     },
