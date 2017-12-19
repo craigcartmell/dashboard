@@ -1,9 +1,8 @@
 import React from 'react'
 import moment from 'moment'
-import styles from './campaign-row.css'
 
-const CampaignRow = ({campaign}) => {
-  return <div className={styles.listItem}>
+const CampaignRow = ({campaign, index}) =>
+  <div style={rowStyle(index)}>
     <div className="flex w-full flex-no-wrap px-4 py-4">
       <div>
         <span className="block text-md font-bold h-auto">{campaign.name}</span>
@@ -15,6 +14,9 @@ const CampaignRow = ({campaign}) => {
       <div className="flex-2">Created {moment(campaign["created_at"]).fromNow()}</div>
     </div>
   </div>
+
+const rowStyle = (index = 0) => {
+  return index % 2 === 0 ? {'background': 'rgba(37, 37, 37, 0.2)'} : {}
 }
 
 export default CampaignRow

@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './campaign-list.css'
 import CampaignRow from "../CampaignRow"
 
 const CampaignList = ({data : {campaigns, error, loading }}) => {
@@ -10,8 +9,8 @@ const CampaignList = ({data : {campaigns, error, loading }}) => {
     return <p>{error.message}</p>;
   }
 
-  return <div className={styles.list}>{campaigns && campaigns.map((campaign) =>
-    <CampaignRow campaign={campaign} key={campaign.id}/>
+  return <div>{campaigns && campaigns.map((campaign, index) =>
+    <CampaignRow campaign={campaign} index={index} key={campaign.id}/>
   )}</div>
 }
 

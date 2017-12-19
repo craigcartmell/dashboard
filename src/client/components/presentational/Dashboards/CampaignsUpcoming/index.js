@@ -25,8 +25,8 @@ const CampaignsUpcoming = ({ data: {error, loading, campaigns} }) =>
       {Object.keys(campaignsByStartDate).map(startDate =>
         <GridItem title={startDate} key={startDate}>
           <div className={styles.list}>
-            {campaignsByStartDate[startDate].map(campaign =>
-              <CampaignRow campaign={campaign} key={campaign.id}/>
+            {campaignsByStartDate[startDate].map((campaign, index) =>
+              <CampaignRow campaign={campaign} index={index} key={campaign.id}/>
             )}
           </div>
         </GridItem>
@@ -34,6 +34,5 @@ const CampaignsUpcoming = ({ data: {error, loading, campaigns} }) =>
     </Grid>
   </Aux>
 }
-
 
 export default CampaignsUpcoming

@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from './grid.css'
 
 const Grid = ({ children }) =>
-  <div className={"flex w-full"}>
+  <div className={"flex w-full h-full"}>
     { children }
   </div>
 

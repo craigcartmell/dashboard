@@ -13,11 +13,11 @@ const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUni
   <Aux>
     <Title title="Live Campaigns by Business Unit"/>
     <Grid>
-      {campaignsByBusinessUnit && campaignsByBusinessUnit.map((businessUnit, k) =>
-        <GridItem title={businessUnit.name + " (" + businessUnit.campaigns.length + ")"} key={k}>
+      {campaignsByBusinessUnit && campaignsByBusinessUnit.map((businessUnit, businessUnitIndex) =>
+        <GridItem title={businessUnit.name + " (" + businessUnit.campaigns.length + ")"} key={businessUnitIndex}>
           <div className={styles.list}>
-            {businessUnit.campaigns.map((campaign) =>
-              <CampaignRow campaign={campaign} key={campaign.id}/>
+            {businessUnit.campaigns.map((campaign, campaignIndex) =>
+              <CampaignRow campaign={campaign} key={campaign.id} index={campaignIndex}/>
             )}
           </div>
         </GridItem>
