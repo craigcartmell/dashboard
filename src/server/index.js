@@ -11,8 +11,9 @@ require('./connectors')
 
 const app = express()
 const endpointURL = env.app.endpointURL
+const graphiqlURL = env.app.graphiqlURL
 
 app.use(endpointURL, [cors(), bodyParser()], graphqlExpress({ schema }))
-app.get(endpointURL, graphiqlExpress({ endpointURL }))
+app.get(graphiqlURL, graphiqlExpress({ endpointURL }))
 
 app.listen(env.app.port)
