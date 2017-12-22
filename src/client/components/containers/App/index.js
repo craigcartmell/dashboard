@@ -17,6 +17,7 @@ class App extends React.Component {
   ]
 
   componentDidMount() {
+    return
     const {history} = this.props
 
     setInterval(() => {

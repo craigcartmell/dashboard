@@ -19,8 +19,8 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
       } catch(e) {
       }
 
-      return <div className={styles.listItem}>
-        <div className="flex w-full flex-no-wrap px-4 py-4 h-200" key={k}>
+      return <div className={styles.listItem} key={k}>
+        <div className="flex w-full flex-no-wrap px-4 py-4 h-200">
           <div className="flex-1">
             <h5>{payload.displayName}</h5>
           </div>

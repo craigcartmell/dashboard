@@ -2,8 +2,6 @@ import React from 'react'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 
-import styles from './default.css'
-
 import CampaignList from '../../../presentational/CampaignList'
 import GridItem from '../../../presentational/GridItem'
 import FailedJobList from "../../../presentational/FailedJobList"
