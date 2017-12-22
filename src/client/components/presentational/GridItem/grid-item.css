@@ -17,11 +17,3 @@
     background-color: config('colors.orange-dark');
     color: config('colors.white');
 }
-
-.titleContainer {
-    background-color: transparent;
-}
-
-.title {
-    color: config('colors.grey-darkest');
-}

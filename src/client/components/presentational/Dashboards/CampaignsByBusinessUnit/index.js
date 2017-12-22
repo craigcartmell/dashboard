@@ -1,7 +1,5 @@
 import React from 'react'
 
-import styles from './campaigns-by-business-unit.css'
-
 import Grid from '../../Grid'
 import GridItem from '../../GridItem'
 import CampaignRow from "../../CampaignRow"
@@ -15,7 +13,7 @@ const CampaignsByBusinessUnit = ({ data: {error, loading, campaignsByBusinessUni
     <Grid>
       {campaignsByBusinessUnit && campaignsByBusinessUnit.map((businessUnit, businessUnitIndex) =>
         <GridItem title={businessUnit.name + " (" + businessUnit.campaigns.length + ")"} key={businessUnitIndex}>
-          <div className={styles.list}>
+          <div>
             {businessUnit.campaigns.map((campaign, campaignIndex) =>
               <CampaignRow campaign={campaign} key={campaign.id} index={campaignIndex}/>
             )}

@@ -2,8 +2,6 @@ import React from 'react'
 import moment from 'moment'
 import _groupBy from 'lodash/groupBy'
 
-import styles from './campaigns-upcoming.css'
-
 import Grid from '../../Grid'
 import GridItem from '../../GridItem'
 import CampaignRow from "../../CampaignRow"
@@ -24,7 +22,7 @@ const CampaignsUpcoming = ({ data: {error, loading, campaigns} }) =>
     <Grid>
       {Object.keys(campaignsByStartDate).map(startDate =>
         <GridItem title={startDate} key={startDate}>
-          <div className={styles.list}>
+          <div>
             {campaignsByStartDate[startDate].map((campaign, index) =>
               <CampaignRow campaign={campaign} index={index} key={campaign.id}/>
             )}

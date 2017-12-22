@@ -1,8 +1,6 @@
 import React from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
-import styles from './campaigns-by-business-unit-chart.css'
-
 import Grid from '../../Grid'
 import Title from "../Title"
 import GridItem from "../../GridItem"
