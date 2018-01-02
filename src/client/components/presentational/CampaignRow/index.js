@@ -4,7 +4,7 @@ import GridItemRow from "../GridItemRow"
 
 const CampaignRow = ({campaign, index}) =>
   <GridItemRow index={index}>
-    <div className="block w-full">
+    <div className="block w-full leading-normal">
       <span className="block text-md font-bold h-auto">{campaign.name}</span>
       <span className="block text-sm">{campaign.client.name}</span>
     </div>

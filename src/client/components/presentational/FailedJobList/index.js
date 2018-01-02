@@ -19,7 +19,7 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
       } catch(e) {
       }
 
-      return <GridItemRow index={index}>
+      return <GridItemRow index={index} key={index}>
         <div className="flex w-full">
           <div className="flex-1">
             <h5>{payload.displayName}</h5>

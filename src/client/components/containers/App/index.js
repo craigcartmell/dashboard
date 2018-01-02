@@ -17,12 +17,11 @@ class App extends React.Component {
   ]
 
   componentDidMount() {
-    return
     const {history} = this.props
 
     setInterval(() => {
       let nextRouteIndex = this.state.lastRouteIndex + 1
-      nextRouteIndex = nextRouteIndex > App.dashboardRoutes.length ? 0 : nextRouteIndex
+      nextRouteIndex = nextRouteIndex > App.dashboardRoutes.length - 1 ? 0 : nextRouteIndex
 
       const nextRoute = App.dashboardRoutes[nextRouteIndex]
 
