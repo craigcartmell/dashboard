@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import styles from './failed-job-list.css'
+import GridItemRow from "../GridItemRow"
 
 const FailedJobList = ({data : {failedJobs, error, loading }}) => {
   if (loading) {
@@ -10,8 +10,8 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
     return <p>{error.message}</p>;
   }
 
-  return <div className={styles.list}>
-    {failedJobs && failedJobs.map((j, k) => {
+  return <div>
+    {failedJobs && failedJobs.map((j, index) => {
       let payload = {}
 
       try {
@@ -19,8 +19,8 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
       } catch(e) {
       }
 
-      return <div className={styles.listItem} key={k}>
-        <div className="flex w-full flex-no-wrap px-4 py-4 h-200">
+      return <GridItemRow index={index}>
+        <div className="flex w-full">
           <div className="flex-1">
             <h5>{payload.displayName}</h5>
           </div>
@@ -28,7 +28,7 @@ const FailedJobList = ({data : {failedJobs, error, loading }}) => {
             <h5>{moment(j["failed_at"]).fromNow()}</h5>
           </div>
         </div>
-      </div>
+      </GridItemRow>
     }
   )}</div>
 }

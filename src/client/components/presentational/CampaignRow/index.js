@@ -1,22 +1,17 @@
 import React from 'react'
 import moment from 'moment'
+import GridItemRow from "../GridItemRow"
 
 const CampaignRow = ({campaign, index}) =>
-  <div style={rowStyle(index)}>
-    <div className="flex w-full flex-no-wrap px-4 py-4">
-      <div>
-        <span className="block text-md font-bold h-auto">{campaign.name}</span>
-        <span className="block text-sm">{campaign.client.name}</span>
-      </div>
+  <GridItemRow index={index}>
+    <div className="block w-full">
+      <span className="block text-md font-bold h-auto">{campaign.name}</span>
+      <span className="block text-sm">{campaign.client.name}</span>
     </div>
-    <div className="block flex px-4 py-4 text-sm">
-      <div className="flex-1">{moment(campaign["starts_at"]).format('Y-MM-DD')} - {moment(campaign["ends_at"]).format('Y-MM-DD')}</div>
-      <div className="flex-2">Created {moment(campaign["created_at"]).fromNow()}</div>
+    <div className="block w-full flex py-8 text-sm">
+      <span className="flex-1">{moment(campaign["starts_at"]).format('Y-MM-DD')} - {moment(campaign["ends_at"]).format('Y-MM-DD')}</span>
+      <span className="flex-2">Created {moment(campaign["created_at"]).fromNow()}</span>
     </div>
-  </div>
-
-const rowStyle = (index = 0) => {
-  return index % 2 === 0 ? {'background': 'rgba(37, 37, 37, 0.2)'} : {}
-}
+  </GridItemRow>
 
 export default CampaignRow
