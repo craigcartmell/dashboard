@@ -1,35 +1,17 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import {nextRouteIndex, routeByIndex} from "../../../helpers/dashboard"
 import styles from './app.css'
 
 class App extends React.Component {
-   state = {
-    lastRouteIndex: 0,
-  }
-
-  static dashboardRoutes = [
-    '/',
-    '/campaigns-upcoming',
-    '/campaigns-by-business-unit-chart',
-    '/campaigns-by-business-unit/1',
-    '/campaigns-by-business-unit/2',
-    '/campaigns-by-business-unit/3',
-  ]
-
   componentDidMount() {
     const {history} = this.props
 
     setInterval(() => {
-      let nextRouteIndex = this.state.lastRouteIndex + 1
-      nextRouteIndex = nextRouteIndex > App.dashboardRoutes.length - 1 ? 0 : nextRouteIndex
+      const routeIndex = nextRouteIndex(this.state.lastRouteIndex + 1)
+      const nextRoute = routeByIndex(routeIndex)
 
-      const nextRoute = App.dashboardRoutes[nextRouteIndex]
-
-      this.setState({
-        lastRouteIndex: nextRouteIndex,
-      })
-
-      return history.push(nextRoute)
+      return history.push(`${nextRoute}?lastRouteIndex=${routeIndex}`)
     }, 10000)
   }
 
