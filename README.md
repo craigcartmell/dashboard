@@ -1,7 +1,7 @@
 # Dashboard
 A real-time dashboard for tracking failed jobs and campaign go-lives.
 
-![Dashboard Video](https://www.youtube.com/watch?v=GQbJA2zahGk)
+[Watch the video](https://www.youtube.com/watch?v=GQbJA2zahGk)
 
 ### Build
 The app was built using [Apollo 2](https://www.apollographql.com/).
